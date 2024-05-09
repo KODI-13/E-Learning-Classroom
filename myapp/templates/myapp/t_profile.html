@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% extends 'myapp/oz.html' %}
+    {%load static %}
+
+    <title>
+        {% block title %}
+            Teachers
+        {% endblock %}
+    </title>
+
+</head>
+<body>
+    {% block content %}
+    <div style="padding: 20px; text-align: justify; margin-top: 80px;">
+        <section class="teacher-profile" >
+
+            <h1 class="heading">profile details</h1>
+         
+            <div class="details">
+               <div class="tutor">
+                  <img src="{{ teacher.image.url }}" alt="{{teacher.name}}" class="teacher-image">
+                  <h3>{{teacher.name}}</h3>
+                  <span>{{teacher.qualification}}</span>
+               </div>
+               <div class="flex">
+                  <p>total playlists : <span>{{num}}</span></p>
+               </div>
+            </div>
+         
+         </section>
+         
+         <section class="courses">
+         
+            <h1 class="heading">Teacher courses</h1>
+
+            <div class="box-container" style="display: flex; flex-wrap: wrap; justify-content: center;">
+               {% for course in courses %}
+               <div class="box">
+                  <div class="thumb">
+                     <img src="{{course.thumbnail.url}}" alt="{{ course.title }}">
+                  </div>
+                  <h3 class="title">{{course.title}}</h3>
+                  <a href="/t_playlist/{{course.id}}/" class="inline-btn">view playlist</a>
+                  <a href="/purchase/{{course.id}}" class="inline-btn" style="margin-left: 20px;"><i class="fas fa-shopping-cart"> Purchase</i></a>
+
+               </div>
+               {% endfor %}
+         
+            </div>
+
+         
+         </section>
+    </div>
+
+    <!-- <script>
+      function myFunction() {
+        alert("This Course has been added to your Profile");
+      }
+    </script> -->
+
+    
+    {% endblock %}
+</body>
+</html>

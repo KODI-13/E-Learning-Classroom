@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+	<script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css'>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    {%load static%}
+    <link rel="stylesheet" href="{% static 'css/ol.css' %}">
+
+    <title>
+
+         {% block title %}
+         
+         {% endblock %}
+    </title>
+ 
+</head>
+<body>
+
+    <input type="checkbox" id="check" >
+    <label for="check" >
+        <i class="fas fa-bars" id="btn" style="top: 15px;"></i>
+        <i class="fas fa-times" id="cancel" style="position: fixed;"></i>
+    </label> 
+
+    <div class="sidebar">
+
+        <header>Samyak Class</header>
+
+        <ul>
+            <li><a href="/teacher_profile/{{data.id}}/"><i class="fas fa-home"></i>Home</a></li>
+            <li><a href="/add/{{data.id}}/"><i class="fas fa-stream"></i>Add Course</a></li>
+        </ul>  
+    </div>
+    <div style="width: 100%; height: 77px; background: #042331; color: white; text-align: center; position: absolute; top: 0; z-index: 1; padding-top: 10px;">
+        <h1 style="font-family: Roboto;  display: inline-block; margin: 0;">SAMYAK CLASSES</h1>
+        <div style="float: right; margin-right: 20px; color: white;">
+            <!-- <h5><a href="/"><i class="fa fa-sign-out" aria-hidden="true"> logout</i></a></h5> -->
+            <div class="btn-group dropdown" style="text-align: center; border-radius: 5px; margin-top: 15px;">
+                <button type="button" style="background-color: #166c88; border-radius: 5px; color: white;">
+                   {% if data.id %}
+                   <li><a class="dropdown-item" href="/tlogin/"><i class="fa fa-sign-out" aria-hidden="true"> logout</i></a></li>
+                   {% endif %}
+                </button>
+                <button type="button"  data-bs-toggle="dropdown" aria-expanded="false"  style="background-color: #166c88; border-radius: 5px; color: white;">
+                  <li><i class="fas fa-arrow-down"><span class="visually-hidden"></span></i></li>
+                </button>
+                <ul class="dropdown-menu">
+                  <!-- Dropdown menu links -->
+                  <li><a class="dropdown-item" href="/tlogin/">Teacher</a></li>
+                  <li><a class="dropdown-item" href="/login/">Student</a></li>
+                  <li><a class="dropdown-item" href="/admin/">Admin</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <section>
+      {% block content %}
+
+      {% endblock %}
+    </section>
+</body>
+</html>

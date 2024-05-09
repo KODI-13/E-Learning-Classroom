@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% extends 'teacher/ol.html' %}
+    {%load static %}
+
+    <title>
+        {% block title %}
+            Teachers
+        {% endblock %}
+    </title>
+
+</head>
+<body>
+    {% block content %}
+    <div style="padding: 20px; text-align: justify; margin-top: 80px;">
+        <section class="playlist-videos">
+            <h1 class="heading">playlist videos</h1>
+            <div class="form-container">
+                <div class="form-group">
+                    <h3>ADD Videos to courses</h3>
+                    <form action="" method="post" enctype="multipart/form-data" style="padding-left: 400px;" >
+                        {% csrf_token %}
+                        <label for="caption">Caption:</label><br>
+                        <input type="text" id="caption" name="caption"><br><br>
+                        <label for="thumbnail">Thumbnail:</label><br>
+                        <input type="file" name="thumbnail" id="thumbnail" accept="image/*"><br><br> <!-- Add input field for thumbnail -->
+                        <label for="videos">Video:</label><br>
+                        <input type="file" name="video" id="videos" accept="video/*"><br><br>
+                        <input type="submit" value="Upload">
+                    </form>
+                </div>
+            </div>
+        
+            <br><br><br><br>
+            
+
+            <div style="display: flex; flex-wrap: wrap; justify-content: center;">
+                {% for video in videos %}
+                    <div style="border: 1px solid #ccc; border-radius: 5px; padding: 10px; margin: 10px; background-color: #f9f9f9; box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); width: 200px;">
+                        <!-- Video Thumbnail -->
+                        {% if video.thumbnail %}
+                        <img src="{{ video.thumbnail.url }}" alt="{{ video.caption }}" style="width: 100%; height: auto; border-radius: 5px;">
+                        {% else %}
+                        <div style="height: 150px; background-color: #ddd; border-radius: 5px;"></div> <!-- Placeholder for missing thumbnail -->
+                        {% endif %}
+                        <!-- Video Caption -->
+                        <div style="margin-top: 10px; text-align: center;">
+                            <strong>{{ video.caption }}</strong>
+                        </div>
+                        <!-- Video File Link -->
+                        <div style="text-align: center;">
+                            {% if video.video_file %}
+                                <a href="{{ video.video_file.url }}" target="_blank">Play</a>
+                            {% else %}
+                                No video file associated with this Playlist yet.
+                            {% endif %}
+                            <a href="/playedit/{{ video.id }}">Edit</a>
+                        </div>
+                        
+                    </div>
+                {% endfor %}
+            </div>
+        
+        </section>
+      
+    </div>
+    
+    {% endblock %}
+</body>
+</html>
+
+
+<!-- <div style="text-align: center;">
+    <a href="{{ video.video_file.url }}" target="_blank">Play</a>
+    <a href="/playedit/{{video.id}}">Edit</a>
+</div> -->

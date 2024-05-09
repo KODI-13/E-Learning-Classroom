@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% extends 'myapp/oz.html' %}
+    {%load static %}
+
+    <title>
+        {% block title %}
+            Teachers
+        {% endblock %}
+    </title>
+
+</head>
+<body>
+    {% block content %}
+    <div style=" margin-top: 0px; padding: 20px; text-align: justify; margin-top: 80px;">
+
+        <section class="teachers">
+            <h1 class="heading">expert teachers</h1>
+            <div style="display: flex; flex-wrap: wrap; justify-content: center;">
+            {%for teacher in data1%}
+            <div class="box-container">
+                <div class="box" style="margin: 10px;">
+                    <div class="tutor">
+                        <img src="{{ teacher.image.url }}" alt="{{teacher.name}}" class="teacher-image">
+                    </div>
+                    <p>Name : {{teacher.name}}</p>
+                    <p>Qulification : {{teacher.qualification}}</p>
+                    <p>Experience : {{teacher.experience}}</p>
+                    <a href="/t_profile/{{teacher.id}}" class="inline-btn">view profile</a>
+                </div>       
+            </div>
+            {%endfor%}
+            </div>
+        </section> 
+
+    </div>
+
+
+
+    
+    {% endblock %}
+</body>
+</html>
+
+
+            <!-- <h1 class="heading">expert teachers</h1>
+            <div style="display: flex; ">
+            {%for teacher in data%}
+            <div class="card text-dark bg-light mb-3" style="max-width: 20rem; margin: 10px;">
+                <img src="{{ teacher.image.url }}" alt="{{teacher.name}}" class="teacher-image">
+                <div class="card-header"><h5><center>{{teacher.name}}</center></h5></div>
+                <div class="card-body">
+                  <p class="card-text">Qulification : {{teacher.qualification}}</p>
+                  <p class="card-text">Experience : {{teacher.experience}}</p>
+                  <a href="teacher_profile.html" class="inline-btn">view profile</a>
+                </div>
+              </div>
+            {%endfor%}
+            </div> -->

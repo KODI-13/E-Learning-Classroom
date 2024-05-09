@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% extends 'teacher/ol.html' %}
+    {%load static %}
+
+    <title>
+        {% block title %}
+            Teachers
+        {% endblock %}
+    </title>
+
+</head>
+<body>
+    {% block content %}
+    <div style="padding: 20px; text-align: justify; margin-top: 80px;">
+        <section class="playlist-videos">
+            <h1 class="heading">playlist videos</h1>
+            <div class="form-container">
+                <div class="form-group">
+                    <h3>Edit current video</h3>
+                    <form action="" method="post" enctype="multipart/form-data" style="padding-left: 400px;" >
+                        {% csrf_token %}
+                        <label for="caption">Caption:</label><br>
+                        <input type="text" id="caption" name="caption" value="{{video.caption}}"><br><br>
+
+                        <!-- Display existing thumbnail if available -->
+                        {% if video.thumbnail %}
+                            <label>Current Thumbnail:</label><br>
+                            <img src="{{ video.thumbnail.url }}" alt="Current Thumbnail" style="max-width: 200px;"><br><br>
+                        {% endif %}
+
+                        <!-- Allow user to upload a new thumbnail -->
+                        <label for="thumbnail">New Thumbnail:</label><br>
+                        <input type="file" name="thumbnail" id="thumbnail" accept="image/*"><br><br>
+
+                        {% if video.video_file %}
+                            <label>Current Video:</label><br>
+                            <video controls style="max-width: 400px;">
+                                <source src="{{ video.video_file.url }}" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video><br><br>
+                        {% endif %}
+
+                        <!-- Allow user to upload a new video -->
+                        <label for="videos">New Video:</label><br>
+                        <input type="file" name="video" id="videos" accept="video/*"><br><br>
+                        
+                        <div class="form-group" style="display: flex; justify-content: space-between;">
+                            <button type="submit" class="btn btn-success">Update</button>
+                            <button class="btn btn-danger" style="background-color: red; margin-left: 10px;"><a href="/playdelete/{{video.id}}/" style="color: white; text-decoration: none;">Delete</a></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        
+        </section>
+      
+    </div>
+    
+    {% endblock %}
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% extends 'myapp/oz.html' %}
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account</title>
+</head>
+<body style="font-family: Arial, sans-serif; margin: 0; padding: 0; display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #f0f0f0;">
+    {% block content %}
+    <div style="padding: 20px; margin-top: 80px;"></div>
+    <div style="text-align: center;">
+        <div class="signup-container" style="width: 350px; padding: 20px; border: 1px solid #ccc; border-radius: 5px; background-color: #fff; display: inline-block;">
+            <h2>Update Student Details</h2>
+            <form id="signupForm" action="" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <label for="clientName" style="margin-bottom: 5px; display: block;">Student Name:</label>
+                <input type="text" id="clientName" name="name" value="{{s_data.name}}" required style="width: calc(100% - 22px); padding: 10px; margin: 8px 0; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;">
+                <label for="clientImage" style="margin-bottom: 5px; display: block;">Current Student Image:</label>
+                {% if s_data.image %}
+                <img src="{{ s_data.image.url }}" alt="Student Image" style="max-width: 100%; margin-bottom: 8px;"> <br><br>
+                {% else %}
+                <p>No image available</p>
+                {% endif %}
+                <label for="clientImage" style="margin-bottom: 5px; display: block;">Update Student Image:</label>
+                <input type="file" id="clientImage" name="image" accept="image/*" required style="width: calc(100% - 22px); padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;"><br><br>               
+                <label for="clientCity" style="margin-bottom: 5px; display: block;">Your City:</label>
+                <input type="text" id="clientCity" name="city" value="{{s_data.city}}" required style="width: calc(100% - 22px); padding: 10px; margin: 8px 0; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;"><br><br>
+                <input type="submit" value="Update" style="width: calc(100% - 22px); padding: 10px; background-color: #4CAF50; color: white; border: none; border-radius: 4px; cursor: pointer;">
+            </form>
+        </div>
+    </div>
+    </div>
+    {% endblock %}
+</body>
+</html>
+

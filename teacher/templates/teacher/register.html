@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Registration</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            background-color: #333;
+            padding: 20px;
+            border-radius: 10px;
+            width: 300px;
+            margin: 100px auto;
+        }
+        .container h2 {
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input {
+            width: 250px;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            background-color: #444;
+            color: white;
+        }
+        .form-group input[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+        }
+        .form-group input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Teacher Registration</h2>
+        <form action="#" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="teacherName">Teacher Name</label>
+                <input type="text" id="teacherName" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="teacherImage">Teacher Image</label>
+                <input type="file" id="teacherImage" name="img" accept="image/*" required>
+                <!-- <img id="imagePreview" src="#" alt="Preview" name="img" style="max-width: 100px; max-height: 100px; display: none;"> -->
+            </div>
+            <div class="form-group">
+                <label for="teacherQualification">Qualification</label>
+                <input type="text" id="teacherQualification" name="qualify" required>
+            </div>
+            <div class="form-group">
+                <label for="teacherExperience">Experience</label>
+                <input type="text" id="teacherExperience" name="expert" required>
+            </div>
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Register">
+            </div>
+        </form>
+        <hr>
+        <p>Already register? <a href="/tlogin/">Login</a></p>
+    </div>
+</body>
+</html>
