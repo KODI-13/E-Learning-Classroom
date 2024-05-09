@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% extends 'teacher/ol.html' %}
+    {%load static %}
+
+    <title>
+        {% block title %}
+            Add
+        {% endblock %}
+    </title>
+   
+</head>
+<body>
+    {% block content %}
+    <div style=" margin-top: 0px; padding: 20px; text-align: justify; margin-top: 80px;">
+    
+        <div style="width: 80%; margin: 0 auto; background-color: #f8f9fa; padding: 20px; border-radius: 10px; width: 500px;">
+        <h2>Edit Course</h2>
+        <form method="post" enctype="multipart/form-data" style="background-color: #ffffff; padding: 20px; border-radius: 10px;">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="thumbnail">Thumbnail:</label>
+                <input type="file" id="Thumbnail" name="thumbnail" accept="image/*" value="{{course.thumbnail.url}}" alt="{{ course.title }}" required>
+            </div>
+            <div class="form-group">
+                <label for="title">Title:</label>
+                <input type="text" id="Title" name="title" value="{{course.title}}" required>
+            </div>
+            <div class="form-group" style="display: flex; justify-content: space-between;">
+                <button type="submit" class="btn btn-success">Update</button>
+                <button class="btn btn-danger" style="background-color: red; margin-left: 10px;"><a href="/delete/{{course.id}}" style="color: white; text-decoration: none;">Delete</a></button>
+            </div>
+
+        </form>
+        </div>
+    </div>    
+
+    {% endblock %}
+</body>
+</html>

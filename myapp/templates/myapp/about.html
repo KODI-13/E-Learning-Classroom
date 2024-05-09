@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% extends 'myapp/oz.html' %}
+    {%load static %}
+    <title>
+        {% block title %}
+            About
+        {% endblock %}
+    </title>
+
+</head>
+<body>
+    {% block content %}
+      <div style=" margin-top: 0px; padding: 20px; text-align: justify; ">
+
+        <header class="header">
+   
+            <section class="flex">
+     
+         <section class="about">
+         
+            <div class="row">
+         
+               <div class="image">
+                  <img src="{% static 'images/about-img.svg' %}" alt="">
+               </div>
+         
+               <div class="content">
+                  <h3>why choose us?</h3>
+                  <p> "Pick our Samyak Computer Education because we provide a great learning experience. Our expert teachers, modern curriculum, and excellent facilities ensure you get the best education. Join us for a learning journey that prepares you well for success in computer science."We provide you computer cources in afordable prizes"there are so much cources for learning .
+                  <br><a href="/course/{{s_data.id}}" class="inline-btn">our courses</a></p>
+               </div>
+         
+            </div>
+         
+            <div class="box-container">
+         
+         
+               <div class="box">
+                  <i class="fas fa-user-graduate"></i>
+                  <div>
+                     <h3>+500</h3>
+                     <p>brilliant students</p>
+                  </div>
+               </div>
+         
+               <div class="box">
+                  <i class="fas fa-user"></i>
+                  <div>
+                     <h3>3</h3>
+                     <p>expert tutors</p>
+                  </div>
+               </div>
+         
+               <div class="box">
+                  <i class="fas fa-briefcase"></i>
+                  <div>
+                     <h3>100%</h3>
+                     <p>understand the concepts</p>
+                  </div>
+               </div>
+         
+            </div>
+         
+         </section>
+      </div> 
+    {% endblock %}
+</body>
+</html>

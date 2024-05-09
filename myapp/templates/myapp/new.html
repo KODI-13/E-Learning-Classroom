@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        .signup-container {
+            width: 350px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+        }
+        h2 {
+            text-align: center;
+        }
+        input[type="text"], input[type="password"], input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        input[type="file"] {
+            margin-bottom: 8px;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        label {
+            margin-bottom: 5px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="signup-container">
+        <h2>Create New Account</h2>
+        <form id="signupForm" action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <label for="clientName">Student Name:</label>
+            <input type="text" id="clientName" name="name" required>
+            <label for="clientImage">Student Image:</label>
+            <input type="file" id="clientImage" name="image" accept="image/*" required>
+            <label for="clientCity">Your City:</label>
+            <input type="text" id="clientCity" name="city" required>
+            <label for="username">Create Unique ID:</label>
+            <input type="text" id="username" name="username" required>
+            <label for="password">Create Password:</label>
+            <input type="password" id="password" name="password" required>
+            <input type="submit" value="Create Account">
+        </form>
+        <hr>
+        <p>Already register? <a href="/login/">Login</a></p>
+    </div>
+</body>
+</html>

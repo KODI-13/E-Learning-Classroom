@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% extends 'teacher/ol.html' %}
+    {%load static %}
+
+    <title>
+        {% block title %}
+            Add
+        {% endblock %}
+    </title>
+   
+</head>
+<body>
+    {% block content %}
+    <div style=" margin-top: 0px; padding: 20px; text-align: justify; margin-top: 80px;">
+    
+        <div style="width: 80%; margin: 0 auto; background-color: #f8f9fa; padding: 20px; border-radius: 10px; width: 400px;">
+        <h2>Add Course</h2>
+        <form method="post" enctype="multipart/form-data" style="background-color: #ffffff; padding: 20px; border-radius: 10px;">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="thumbnail">Thumbnail:</label>
+                <input type="file" id="Thumbnail" name="thumbnail" accept="image/*" required>
+            </div>
+            <div class="form-group">
+                <label for="title">Title:</label>
+                <input type="text" id="Title" name="title" required>
+            </div>
+            <!-- <div class="form-group">
+                <label for="videos">Videos:</label>
+                <input type="file" name="video" id="videos" multiple accept="video/*">
+            </div> -->
+            <input type="submit" class="btn btn-primary" value="Submit">
+        </form>
+        </div>
+    </div>    
+
+    {% endblock %}
+</body>
+</html>

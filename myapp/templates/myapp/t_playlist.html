@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% extends 'myapp/oz.html' %}
+    {%load static %}
+
+    <title>
+        {% block title %}
+            Teachers
+        {% endblock %}
+    </title>
+
+</head>
+<body>
+    {% block content %}
+    <div style="padding: 20px; text-align: justify; margin-top: 80px;">
+        <section class="playlist-videos">
+            <div style="background: linear-gradient(to right, white, white); overflow: hidden; padding: 10px; border-radius: 5px;">
+                <h1 class="heading" style="display: inline-block; margin: 0;">Playlist Videos</h1>
+                <!-- <form method="post" action="" style="float: right; margin-left: 20px;">
+                    {% csrf_token %}
+                    <a href="/t_playlist/{{course.id}}/" class="inline-btn" onclick="myFunction()">Add Course to Profile</a>
+                </form> -->
+            </div>
+            
+            <br><br>
+            <div style="display: flex; flex-wrap: wrap; justify-content: center;">
+                {% for video in videos %}
+                    <div style="border: 1px solid #ccc; border-radius: 5px; padding: 10px; margin: 10px; background-color: #f9f9f9; box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); width: 200px;">
+                        <!-- Video Thumbnail -->
+                        {% if video.thumbnail %}
+                        <img src="{{ video.thumbnail.url }}" alt="{{ video.caption }}" style="width: 100%; height: auto; border-radius: 5px;">
+                        {% else %}
+                        <div style="height: 150px; background-color: #ddd; border-radius: 5px;"></div> <!-- Placeholder for missing thumbnail -->
+                        {% endif %}
+                        <!-- Video Caption -->
+                        <div style="margin-top: 10px; text-align: center;">
+                            <strong>{{ video.caption }}</strong>
+                        </div>
+                        <!-- Video File Link -->
+                        <div style="text-align: center;">
+                            {% if video.video_file %}
+                                {% if s_data.id %}
+                                <a href="{{ video.video_file.url }}" target="_blank">Play</a>
+                                {% else %}
+                                <a href="/new/">Login to play</a>
+                                {% endif %}
+                            {% else %}
+                                No video file associated with this playlist yet.
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        
+        </section>
+      
+    </div>
+
+    <script>
+        function myFunction() {
+          alert("This Course has been added to your Profile");
+        }
+    </script>
+    
+    {% endblock %}
+</body>
+</html>
+
+
+<!-- <div style="background: linear-gradient(to right, white, white); overflow: hidden; padding: 10px; border-radius: 5px;">
+    <h1 class="heading" style="display: inline-block; margin: 0;">Playlist Videos</h1>
+    <form method="post" action="" style="float: right; margin-left: 20px;">
+        {% csrf_token %}
+        <a href="/t_playlist/{{course.id}}" class="inline-btn">Add Course to Profile</a>
+    </form>
+</div> -->
+
+
+
+<!-- <div style="background: linear-gradient(to right, white, white); overflow: hidden; height: 120px;padding: 10px; border-radius: 5px;">
+    <h1 class="heading" style="display: inline-block;">playlist videos</h1>
+    <a href="/t_playlist/{{course.id}}" class="inline-btn" onclick="myFunction()" style="margin-left: 20px; float: right;">Add Course to profile</a>
+</div> -->

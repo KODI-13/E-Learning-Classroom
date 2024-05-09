@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% extends 'teacher/ol.html' %}
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Registration</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    {% block content %}
+    <div class="container" style="background-color: #333; padding: 20px; border-radius: 10px; width: 350px; margin: 100px auto;">
+        <h2 style="text-align: center; color: white;">Teacher Details</h2>
+        <form action="#" method="POST" enctype="multipart/form-data" style="background-color: #333; color: white;">
+            {% csrf_token %}
+            <div class="form-group" style="margin-bottom: 20px;">
+                <label for="teacherName" style="display: block; margin-bottom: 5px;">Teacher Name</label>
+                <input type="text" id="teacherName" name="name" value="{{teacher.name}}" required style="width: 250px; padding: 10px; border-radius: 5px; border: 1px solid #ccc; background-color: #444; color: white;">
+            </div>
+
+            <div class="form-group">
+                <label for="teacherImage">Current Teacher Image</label>
+                {% if teacher.image %}
+                    <img src="{{ teacher.image.url }}" alt="Teacher Image" style="max-width: 250px;"><br><br>
+                {% else %}
+                    <p>No image available</p>
+                {% endif %}
+                <label for="teacherImage">Update Teacher Image</label>
+                <input type="file" id="teacherImage" name="img" accept="image/*" style="width: 250px; padding: 10px; border-radius: 5px; border: 1px solid #ccc; background-color: #444; color: white;">
+            </div>
+            
+            <div class="form-group" style="margin-bottom: 20px;">
+                <label for="teacherQualification" style="display: block; margin-bottom: 5px;">Qualification</label>
+                <input type="text" id="teacherQualification" name="qualify" value="{{teacher.qualification}}" required style="width: 250px; padding: 10px; border-radius: 5px; border: 1px solid #ccc; background-color: #444; color: white;">
+            </div>
+            <div class="form-group">
+                <label for="teacherExperience" style="display: block; margin-bottom: 5px;">Experience</label>
+                <input type="text" id="teacherExperience" name="expert" value="{{teacher.experience}}" required style="width: 250px; padding: 10px; border-radius: 5px; border: 1px solid #ccc; background-color: #444; color: white;">
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Update" style="width: 250px; padding: 10px; border-radius: 5px; border: none; background-color: #007bff; color: white; cursor: pointer;">
+            </div>
+        </form>
+    </div>
+    {% endblock %}
+</body>
+</html>
+

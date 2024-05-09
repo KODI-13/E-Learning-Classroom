@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% extends 'myapp/oz.html' %}
+    {%load static %}
+    <title>
+        {% block title %}
+            home
+        {% endblock %}
+    </title>
+
+</head>
+<body >
+    {% block content %}
+        <div style="width: 100%; z-index: 0; height: 100%; ">
+            <div style=" margin-top: 90px; padding: 20px; text-align: justify; ">
+
+                <section class="teacher-profile" >
+
+                    <h1 class="heading">profile details</h1>
+                 
+                    <div class="details">
+                       <div class="tutor">
+                          <img src="{{ s_data.image.url }}" alt="{{s_data.name}}" class="teacher-image" style="border: 2px solid black;">
+                          <a href="/update/{{s_data.id}}/"><h3>{{s_data.name}}</h3></a>
+                          <span>City : {{s_data.city}}</span>
+                       </div>
+                       <!-- <div class="flex">
+                          <p>City : <span>{{num}}</span></p>
+                       </div> -->
+                    </div>
+                 
+                 </section>
+
+            <br>
+            <span style="text-align: center;">
+                <section class="courses">
+                <h1 class="display-5">Your Courses</h1>
+                <div class="box-container" style="display: flex; flex-wrap: wrap; justify-content: center;">
+                  {%for course in data1%}
+                  <div class="box">
+                     <div class="thumb">
+                        <img src="{{course.thumbnail.url}}" alt="{{ course.title }}">
+                     </div>
+                     <h3 class="title">{{course.title}}</h3>
+                     <a href="/t_playlist/{{course.id}}" class="inline-btn">view playlist</a>
+                  </div>
+                  {%endfor%}                  
+                </div>
+                </section>
+            </span>
+            </div>
+        </div>
+    {% endblock %}
+
+</body>
+</html>
